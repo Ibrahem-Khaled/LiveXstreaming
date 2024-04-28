@@ -1,16 +1,15 @@
 <?php
 
+use App\Http\Controllers\HomePageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\web\addcategoriesController;
 use App\Http\Controllers\web\addchannelController;
 
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomePageController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'dashboard',], function () {
-    Route::get('/', [addcategoriesController::class, 'index'])->name('home');
+    Route::get('/', [addcategoriesController::class, 'index'])->name('homedash');
     Route::post('/post', [addcategoriesController::class, 'create'])->name('createCategories');
     Route::get('/edit/{id}', [addcategoriesController::class, 'show'])->name('showCategories');
     Route::post('/update/{id}', [addcategoriesController::class, 'update'])->name('updateCategories');
