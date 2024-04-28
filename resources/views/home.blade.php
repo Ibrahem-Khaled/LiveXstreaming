@@ -25,7 +25,7 @@
             </div>
             <div id="navigation">
                 <ul>
-                    <li><a class="active" href="{{ route('home') }}">HOME</a></li>
+                    <li><a class="active" href="{{ route('homePage') }}">HOME</a></li>
                 </ul>
             </div>
             <div id="sub-navigation">
