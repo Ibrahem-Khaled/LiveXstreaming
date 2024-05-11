@@ -9,7 +9,7 @@ class HomePageController extends Controller
 {
     public function index()
     {
-        $categore = Categorie::all();
-        return view('home', compact('categore'));
+        $categores = Categorie::all();
+        return view('home', compact('categores'));
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categorie;
+use App\Models\Channel;
 use Illuminate\Http\Request;
 
 class getdataController extends Controller
@@ -22,5 +23,19 @@ class getdataController extends Controller
         return response()->json([
             'categories' => $cate,
         ]);
+    }
+    public function search($data)
+    {
+        if (empty($data)) {
+            return response()->json(['message' => 'Data is empty'], 404);
+        }
+
+        $channels = Channel::where('name', 'like', '%' . $data . '%')->get();
+
+        if ($channels->isEmpty()) {
+            return response()->json(['message' => 'No channels found'], 404);
+        }
+
+        return response()->json($channels);
     }
 }

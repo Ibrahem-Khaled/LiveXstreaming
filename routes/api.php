@@ -9,3 +9,4 @@ use App\Http\Controllers\api\getdataController;
 
 Route::get('/categories', [getdataController::class, 'categories']);
 Route::get('/channels/{id}', [getdataController::class, 'channels']);
+Route::get('/search/{data}', [getdataController::class, 'search']);

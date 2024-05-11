@@ -1,135 +1,209 @@
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>HeroTv</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="all" />
-    <script type="text/javascript" src="{{ asset('js/jquery-1.4.2.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery-func.js') }}"></script>
+
+    <title>heroTV</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Free Template by Free-Template.co" />
+    <meta name="keywords"
+        content="free bootstrap 4, free bootstrap 4 template, free website templates, free html5, free template, free website template, html5, css3, mobile first, responsive" />
+    <meta name="author" content="Free-Template.co" />
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
-<body>
-    <!-- START PAGE SOURCE -->
-    <div id="shell">
-        <div id="header">
-            <h1 id="logo"><a href="#">HeroTV</a></h1>
-            <div class="social"> <span>FOLLOW US ON:</span>
-                <ul>
-                    <li><a class="twitter" href="#">twitter</a></li>
-                    <li><a class="facebook" href="#">facebook</a></li>
-                    <li><a class="vimeo" href="#">vimeo</a></li>
-                    <li><a class="rss" href="#">rss</a></li>
+<body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">HeroTV</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="#section-home" class="nav-link">الرئيسية</a></li>
+                    <li class="nav-item active"><a href="#section-home" class="nav-link">تحميل التطبيق</a></li>
                 </ul>
             </div>
-            <div id="navigation">
-                <ul>
-                    <li><a class="active" href="{{ route('homePage') }}">HOME</a></li>
-                </ul>
-            </div>
-            <div id="sub-navigation">
-                <ul>
-                    <li><a href="#">SHOW ALL</a></li>
-                    <li><a href="#">LATEST TRAILERS</a></li>
-                    <li><a href="#">TOP RATED</a></li>
-                    <li><a href="#">MOST COMMENTED</a></li>
-                </ul>
-                <div id="search">
-                    <form action="#" method="get" accept-charset="utf-8">
-                        <label for="search-field">SEARCH</label>
-                        <input type="text" name="search field" value="Enter search here" id="search-field"
-                            class="blink search-field" />
-                        <input type="submit" value="GO!" class="search-button" />
-                    </form>
+        </div>
+    </nav>
+    <!-- END nav -->
+
+    <section class="ftco-cover ftco-slant" style="background-image: url(images/bg_3.jpg);" id="section-home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center text-center ftco-vh-100">
+                <div class="col-md-10">
+                    <h1 class="ftco-heading ftco-animate">اهلا بك في اكبر تطبيق للبث المباشر</h1>
+                    <h2 class="h5 ftco-subheading mb-5 ftco-animate">HeroTV<a href="#">يمكنك تحميل
+                            التطبيق</a></h2>
+                    <p><a href="https://free-template.co/" target="_blank" class="btn btn-primary ftco-animate">
+                            من هنا</a></p>
                 </div>
             </div>
         </div>
-        <div id="main">
-            <div id="content">
-                @foreach ($categore as $item)
-                    <div class="box">
-                        <div class="head">
-                            <h2>{{ $item->name }}</h2>
-                            <p class="text-right"><a href="#">See all</a></p>
+    </section>
+
+
+
+    <section class="ftco-section bg-light  ftco-slant ftco-slant-white" id="section-features">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12 text-center mb-5 ftco-animate">
+                    <h2 class="text-uppercase ftco-uppercase">الفئات لدينا</h2>
+                    <div class="row justify-content-center">
+                        <div class="col-md-7">
+                            <p class="lead">يمكنك الان متابعة القنوات المفلضلة لديك</p>
                         </div>
-                        @foreach ($item->channel as $channel)
-                            <div class="movie">
-                                <div class="movie-image"> <span class="play"><span
-                                            class="name">{{ $channel->name}}</span></span>
-                                    <a href="#"><img src="{{ $channel->image}}" alt="" /></a>
-                                </div>
-                                <div class="rating">
-                                    <p>RATING</p>
-                                    <div class="stars">
-                                        <div class="stars-in"> </div>
-                                    </div>
-                                    <span class="comments">12</span>
-                                </div>
+                    </div>
+                </div>
+                @foreach ($categores as $categore)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="media d-block mb-4 text-center ftco-media p-md-5 p-4 ftco-animate">
+                            <div class="ftco-icon mb-3"><img width="50px" height="50px"
+                                    src="{{ $categore->image }}" /></div>
+                            <div class="media-body">
+                                <h5 class="mt-0">{{ $categore->name }}</h5>
+                                <p class="mb-5"></p>
+                                <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">المزيد</a></p>
                             </div>
-                        @endforeach
-                        <div class="cl">&nbsp;</div>
+                        </div>
                     </div>
                 @endforeach
             </div>
-            <div id="news">
-                <div class="head">
-                    <h3>NEWS</h3>
-                    <p class="text-right"><a href="#">See all</a></p>
-                </div>
-                <div class="content">
-                    <p class="date">12.04.09</p>
-                    <h4>Disney's A Christmas Carol</h4>
-                    <p>&quot;Disney's A Christmas Carol,&quot; a multi-sensory thrill ride re-envisioned by Academy
-                        Award&reg;-winning filmmaker Robert Zemeckis, captures... </p>
-                    <a href="#">Read more</a>
-                </div>
-                <div class="content">
-                    <p class="date">11.04.09</p>
-                    <h4>Where the Wild Things Are</h4>
-                    <p>Innovative director Spike Jonze collaborates with celebrated author Maurice Sendak to bring one
-                        of the most beloved books of all time to the big screen in &quot;Where the Wild Things
-                        Are,&quot;...</p>
-                    <a href="#">Read more</a>
-                </div>
-                <div class="content">
-                    <p class="date">10.04.09</p>
-                    <h4>The Box</h4>
-                    <p>Norma and Arthur Lewis are a suburban couple with a young child who receive an anonymous gift
-                        bearing fatal and irrevocable consequences.</p>
-                    <a href="#">Read more</a>
+        </div>
+    </section>
+  
+    <section class="ftco-section bg-light ftco-slant ftco-slant-white" id="section-counter">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-12 text-center ftco-animate">
+                    <h2 class="text-uppercase ftco-uppercase">Fun Facts</h2>
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-md-7">
+                            <p class="lead">Far far away, behind the word mountains, far from the countries Vokalia
+                                and Consonantia, there live the blind texts.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="coming">
-                <div class="head">
-                    <h3>COMING SOON<strong>!</strong></h3>
-                    <p class="text-right"><a href="#">See all</a></p>
+            <!-- END row -->
+            <div class="row">
+                <div class="col-md ftco-animate">
+                    <div class="ftco-counter text-center">
+                        <span class="ftco-number" data-number="34146">0</span>
+                        <span class="ftco-label">Lines of Codes</span>
+                    </div>
                 </div>
-                <div class="content">
-                    <h4>The Princess and the Frog </h4>
-                    <a href="#"><img src="css/images/coming-soon1.jpg" alt="" /></a>
-                    <p>Walt Disney Animation Studios presents the musical &quot;The Princess and the Frog,&quot; an
-                        animated comedy set in the great city of New Orleans...</p>
-                    <a href="#">Read more</a>
+                <div class="col-md ftco-animate">
+                    <div class="ftco-counter text-center">
+                        <span class="ftco-number" data-number="1239">0</span>
+                        <span class="ftco-label">Pizza Consume</span>
+                    </div>
                 </div>
-                <div class="cl">&nbsp;</div>
-                <div class="content">
-                    <h4>The Princess and the Frog </h4>
-                    <a href="#"><img src="css/images/coming-soon2.jpg" alt="" /></a>
-                    <p>Walt Disney Animation Studios presents the musical &quot;The Princess and the Frog,&quot; an
-                        animated comedy set in the great city of New Orleans...</p>
-                    <a href="#">Read more</a>
+                <div class="col-md ftco-animate">
+                    <div class="ftco-counter text-center">
+                        <span class="ftco-number" data-number="124">0</span>
+                        <span class="ftco-label">Number of Clients</span>
+                    </div>
                 </div>
             </div>
-            <div class="cl">&nbsp;</div>
         </div>
-        <div id="footer">
-            <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
-            <p class="rf">Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
-            <div style="clear:both;"></div>
+
+    </section>
+   
+    <footer class="ftco-footer ftco-bg-dark">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="ftco-footer-widget mb-4">
+                                <h2 class="ftco-heading-2">Company</h2>
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="py-2 d-block">About</a></li>
+                                    <li><a href="#" class="py-2 d-block">Jobs</a></li>
+                                    <li><a href="#" class="py-2 d-block">Press</a></li>
+                                    <li><a href="#" class="py-2 d-block">News</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="ftco-footer-widget mb-4">
+                                <h2 class="ftco-heading-2">Communities</h2>
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="py-2 d-block">Support</a></li>
+                                    <li><a href="#" class="py-2 d-block">Sharing is Caring</a></li>
+                                    <li><a href="#" class="py-2 d-block">Better Web</a></li>
+                                    <li><a href="#" class="py-2 d-block">Good Template</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="ftco-footer-widget mb-4">
+                                <h2 class="ftco-heading-2">Useful links</h2>
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="py-2 d-block">Bootstrap 4</a></li>
+                                    <li><a href="#" class="py-2 d-block">jQuery</a></li>
+                                    <li><a href="#" class="py-2 d-block">HTML5</a></li>
+                                    <li><a href="#" class="py-2 d-block">Sass</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="ftco-footer-widget mb-4">
+                        <ul class="ftco-footer-social list-unstyled float-md-right float-lft">
+                            <li><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <!-- END PAGE SOURCE -->
+    </footer>
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4"
+                stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
+                stroke-miterlimit="10" stroke="#4586ff" />
+        </svg></div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+
+    <script src="js/main.js"></script>
+
+
 </body>
 
 </html>
