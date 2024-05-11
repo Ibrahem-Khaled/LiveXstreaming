@@ -88,7 +88,7 @@
             </div>
         </div>
     </section>
-  
+
     <section class="ftco-section bg-light ftco-slant ftco-slant-white" id="section-counter">
         <div class="container">
             <div class="row mb-5">
@@ -126,7 +126,7 @@
         </div>
 
     </section>
-   
+
     <footer class="ftco-footer ftco-bg-dark">
         <div class="container">
             <div class="row mb-5">
@@ -189,19 +189,19 @@
         </svg></div>
 
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&sensor=false"></script>
+    <script src="{{ asset('js/google-map.js') }}"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="js/google-map.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
-    <script src="js/main.js"></script>
 
 
 </body>
