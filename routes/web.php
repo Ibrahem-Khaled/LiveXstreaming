@@ -7,6 +7,10 @@ use App\Http\Controllers\web\addchannelController;
 
 
 Route::get('/', [HomePageController::class, 'index'])->name('homePage');
+Route::get('/download-apk', function () {
+    $filePath = public_path('HeroTV.apk');
+    return response()->download($filePath, 'HeroTV.apk');
+})->name('download.apk');
 
 Route::group(['prefix' => 'dashboard',], function () {
     Route::get('/', [addcategoriesController::class, 'index'])->name('home');

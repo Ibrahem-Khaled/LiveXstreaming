@@ -6,12 +6,9 @@
     <title>heroTV</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Free Template by Free-Template.co" />
-    <meta name="keywords"
-        content="free bootstrap 4, free bootstrap 4 template, free website templates, free html5, free template, free website template, html5, css3, mobile first, responsive" />
-    <meta name="author" content="Free-Template.co" />
-
+   
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
@@ -37,7 +34,9 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a href="#section-home" class="nav-link">الرئيسية</a></li>
-                    <li class="nav-item active"><a href="#section-home" class="nav-link">تحميل التطبيق</a></li>
+                    <li class="nav-item active">
+                        <a href="{{ route('download.apk') }}" class="nav-link">تحميل التطبيق</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -51,7 +50,7 @@
                     <h1 class="ftco-heading ftco-animate">اهلا بك في اكبر تطبيق للبث المباشر</h1>
                     <h2 class="h5 ftco-subheading mb-5 ftco-animate">HeroTV<a href="#">يمكنك تحميل
                             التطبيق</a></h2>
-                    <p><a href="https://free-template.co/" target="_blank" class="btn btn-primary ftco-animate">
+                    <p><a href="" target="_blank" class="btn btn-primary ftco-animate">
                             من هنا</a></p>
                 </div>
             </div>
@@ -59,28 +58,54 @@
     </section>
 
 
-
-    <section class="ftco-section bg-light  ftco-slant ftco-slant-white" id="section-features">
+    <section class="ftco-section bg-light ftco-slant ftco-slant-white" id="section-features">
         <div class="container">
-
             <div class="row">
                 <div class="col-md-12 text-center mb-5 ftco-animate">
                     <h2 class="text-uppercase ftco-uppercase">الفئات لدينا</h2>
                     <div class="row justify-content-center">
                         <div class="col-md-7">
-                            <p class="lead">يمكنك الان متابعة القنوات المفلضلة لديك</p>
+                            <p class="lead">يمكنك الان متابعة القنوات المفضلة لديك</p>
                         </div>
                     </div>
                 </div>
                 @foreach ($categores as $categore)
-                    <div class="col-lg-4 col-md-6">
+                    <a class="col-lg-4 col-md-6" type="button" data-bs-toggle="modal"
+                        data-bs-target="#categoryModal{{ $categore->id }}">
                         <div class="media d-block mb-4 text-center ftco-media p-md-5 p-4 ftco-animate">
-                            <div class="ftco-icon mb-3"><img width="50px" height="50px"
-                                    src="{{ $categore->image }}" /></div>
+                            <div class="ftco-icon mb-3">
+                                <img width="50px" height="50px" src="{{ $categore->image }}" />
+                            </div>
                             <div class="media-body">
                                 <h5 class="mt-0">{{ $categore->name }}</h5>
                                 <p class="mb-5"></p>
-                                <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">المزيد</a></p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="categoryModal{{ $categore->id }}" tabindex="-1"
+                        aria-labelledby="categoryModalLabel{{ $categore->id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="categoryModalLabel{{ $categore->id }}">
+                                        {{ $categore->name }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>القنوات:</h5>
+                                    <ul>
+                                        @foreach ($categore->channel as $channel)
+                                            <li>{{ $channel->name }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">إغلاق</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -88,6 +113,7 @@
             </div>
         </div>
     </section>
+
 
     <section class="ftco-section bg-light ftco-slant ftco-slant-white" id="section-counter">
         <div class="container">
@@ -198,6 +224,8 @@
     <script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&sensor=false"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
     <script src="{{ asset('js/google-map.js') }}"></script>
 
     <script src="{{ asset('js/main.js') }}"></script>
