@@ -12,7 +12,7 @@ Route::get('/download-apk', function () {
     return response()->download($filePath, 'HeroTV.apk');
 })->name('download.apk');
 
-Route::group(['prefix' => 'dashboard',], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/', [addcategoriesController::class, 'index'])->name('home');
     Route::post('/post', [addcategoriesController::class, 'create'])->name('createCategories');
     Route::get('/edit/{id}', [addcategoriesController::class, 'show'])->name('showCategories');
@@ -25,4 +25,6 @@ Route::group(['prefix' => 'dashboard',], function () {
     Route::post('/update/channels/{id}', [addchannelController::class, 'update'])->name('updateChannels');
     Route::post('/delete/channels/{id}', [addchannelController::class, 'destroy'])->name('deleteChannels');
 });
+
+require __DIR__.'/auth.php';
 
