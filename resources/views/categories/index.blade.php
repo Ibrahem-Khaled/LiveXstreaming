@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>heroTV</title>
+    <title>TimeTV</title>
     <link rel="icon" type="image/x-icon" href="/icons/icon.png">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
@@ -19,13 +19,17 @@
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <h2>Categories <a href="#addChannel" class="btn btn-success" data-toggle="modal"><i
-                                        class="material-icons">&#xE147;</i> <span>Add Channel</span></a></h2>
+                        <div class="col-md-6">
+                            <h2>Categories</h2>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-md-6 text-md-right">
+                            <a href="#addChannel" class="btn btn-success" data-toggle="modal"><i
+                                    class="material-icons">&#xE147;</i> <span>Add Channel</span></a>
                             <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
                                     class="material-icons">&#xE147;</i> <span>Add Category</span></a>
+                            <a href="{{ route('sliders.index') }}" class="btn btn-success"><i
+                                    class="material-icons">&#xE147;</i> <span>Manage Sliders</span></a>
+
                         </div>
                     </div>
                 </div>
@@ -64,7 +68,8 @@
                                 <td>
                                     <a href="{{ route('showCategories', $item->id) }}" class="edit"
                                         data-toggle="tooltip" title="Edit"><i class="material-icons">&#xE254;</i></a>
-                                    <form action="{{ route('destroyCategories', $item->id) }}" method="POST">
+                                    <form action="{{ route('destroyCategories', $item->id) }}" method="POST"
+                                        style="display:inline-block;">
                                         @csrf
                                         <button type="submit" class="btn btn-danger"
                                             onclick="return confirm('Are you sure you want to delete this category?')"><i

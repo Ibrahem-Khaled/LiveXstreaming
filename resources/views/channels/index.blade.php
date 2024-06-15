@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Betsawerlive</title>
+    <title>TimeTV</title>
     <link rel="icon" type="image/x-icon" href="/icons/icon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -16,8 +16,6 @@
 
     <link href="{{ URL::asset('Crudstyles/styles.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ URL::asset('Crudstyles/javascript.js') }}"></script>
-
-
 </head>
 
 <body>
@@ -34,9 +32,9 @@
                                 </span>
                             </th>
                             <th>Name</th>
-                            <th>image</th>
-                            <th>link</th>
-                            <th>Edit delete</th>
+                            <th>Image</th>
+                            <th>Link</th>
+                            <th>Edit/Delete</th>
                         </tr>
                     </thead>
 
@@ -45,20 +43,24 @@
                             <tr>
                                 <td>
                                     <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                        <label for="checkbox1"></label>
+                                        <input type="checkbox" id="checkbox{{ $loop->index + 1 }}" name="options[]"
+                                            value="{{ $loop->index + 1 }}">
+                                        <label for="checkbox{{ $loop->index + 1 }}"></label>
                                     </span>
                                 </td>
                                 <td>{{ $item->name }}</td>
-                                <td><img src="{{ $item->image }}" width="50px" height="50px"></td>
-                                <td>{{ $item->link }}</td>
+                                <td><img src="{{ $item->image }}" width="50px" height="50px"
+                                        alt="{{ $item->name }}"></td>
+                                <td><a href="{{ $item->link }}" target="_blank">{{ $item->link }}</a></td>
                                 <td>
-                                    <a href="{{ route('channel', $item->id) }}" class="edit">
-                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-
-                                    <form action="{{ route('deleteChannels', $item->id) }}" method="POST">
+                                    <a href="{{ route('channel', $item->id) }}" class="edit" data-toggle="tooltip"
+                                        title="Edit"><i class="material-icons">&#xE254;</i></a>
+                                    <form action="{{ route('deleteChannels', $item->id) }}" method="POST"
+                                        style="display:inline-block;">
                                         @csrf
-                                        <input type="submit" class="btn btn-success" value="Delete">
+                                        <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Are you sure you want to delete this channel?')"><i
+                                                class="material-icons">&#xE872;</i></button>
                                     </form>
                                 </td>
                             </tr>

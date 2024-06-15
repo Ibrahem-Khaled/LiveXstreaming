@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\web\addcategoriesController;
 use App\Http\Controllers\web\addchannelController;
@@ -24,6 +25,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/channel/only/{id}', [addchannelController::class, 'show'])->name('channel');
     Route::post('/update/channels/{id}', [addchannelController::class, 'update'])->name('updateChannels');
     Route::post('/delete/channels/{id}', [addchannelController::class, 'destroy'])->name('deleteChannels');
+
+    Route::resource('sliders', SliderController::class);
+
 });
 
 require __DIR__.'/auth.php';

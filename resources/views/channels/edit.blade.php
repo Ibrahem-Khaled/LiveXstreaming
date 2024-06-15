@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Betsawerlive</title>
+    <title>TimeTV</title>
     <link rel="icon" type="image/x-icon" href="/icons/icon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -33,11 +33,13 @@
                         </div>
                         <div class="form-group">
                             <label>link</label>
-                            <input type="url" class="form-control" value="{{ $cate->link }}" name="link" required>
+                            <input type="url" class="form-control" value="{{ $cate->link }}" name="link"
+                                required>
                         </div>
                         <div class="form-group">
                             <label>image</label>
-                            <input type="url" name="image" value="{{ $cate->image }}" class="form-control"  placeholder="image url">
+                            <input type="url" name="image" value="{{ $cate->image }}" class="form-control"
+                                placeholder="image url">
                             <img src="{{ $cate->image }}" width="50px" height="50px">
                         </div>
                     </div>

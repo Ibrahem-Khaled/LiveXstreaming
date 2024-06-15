@@ -5,10 +5,35 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\Categorie;
 use App\Models\Channel;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class getdataController extends Controller
 {
+
+
+    public function Home()
+    {
+        $categories = Categorie::with([
+            'channel' => function ($query) {
+                $query->latest()->take(5);
+            }
+        ])->take(3)->get();
+        $data = $categories->map(function ($category) {
+            return [
+                'category' => $category->name,
+                'channel' => $category->channels
+            ];
+        });
+
+        $slider = Slider::all();
+
+        return response()->json([
+            'data' => $data,
+            'slider' => $slider,
+        ]);
+    }
+
     public function categories()
     {
         $cate = Categorie::latest()->get();
