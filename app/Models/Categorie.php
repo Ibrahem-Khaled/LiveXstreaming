@@ -14,7 +14,7 @@ class Categorie extends Model
 
 
 
-    public function channel()
+    public function channels()
     {
         return $this->hasMany(Channel::class, 'categorie_id', 'id');
     }

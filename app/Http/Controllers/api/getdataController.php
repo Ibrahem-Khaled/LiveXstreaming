@@ -15,7 +15,7 @@ class getdataController extends Controller
     public function Home()
     {
         $categories = Categorie::with([
-            'channel' => function ($query) {
+            'channels' => function ($query) {
                 $query->latest()->take(5);
             }
         ])->take(3)->get();
