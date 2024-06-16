@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categorie;
+use App\Models\Channel;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,9 @@ class HomePageController extends Controller
                 $query->take(5);
             }
         ])->get();
+        $channels = Channel::paginate(10);
 
-        return view('home', compact('sliders', 'categories'));
+        return view('home', compact('sliders', 'categories', 'channels'));
     }
+
 }
