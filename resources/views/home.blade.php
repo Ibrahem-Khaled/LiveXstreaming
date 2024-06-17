@@ -10,13 +10,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
 
     <style>
         @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
@@ -26,7 +28,7 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            font-family: "Roboto", sans-serif;
+            font-family: "Cairo", sans-serif;
             background-color: rgba(8, 8, 8, 0.89);
             color: white;
         }
@@ -45,17 +47,13 @@
             width: 50px;
         }
 
-        .navbar .buttons {
-            background-color: #e50914;
-            padding: 10px 20px;
-            border-radius: 3px;
+        .navbar .btn {
             cursor: pointer;
             text-align: center;
             flex: 1;
             margin: 10px;
             max-width: 200px;
             align-self: center;
-            /* تحديد عرض أقصى لتجنب العرض الزائد */
         }
 
         .main {
@@ -120,6 +118,15 @@
             border-radius: 10px;
         }
 
+        .about {
+            background-color: #222;
+            padding: 40px;
+            margin: 20px auto;
+            width: 80%;
+            text-align: right;
+            border-radius: 15px;
+        }
+
         .footer {
             display: flex;
             justify-content: center;
@@ -178,6 +185,10 @@
             height: 20px;
             margin-left: 10px;
         }
+        p{
+            text-align: center;
+            margin: 10px;
+        }
     </style>
 </head>
 
@@ -193,10 +204,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <div class="buttons">حمل تطبيق الاندرويد من هنا</div>
+                    <div class="btn btn-danger">حمل تطبيق الاندرويد من هنا</div>
                 </li>
+                <li class="nav-item active">
+                    <a class="btn btn-danger" href="{{ route('contact-us') }}">للشكاوي والمقترحات</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="btn btn-danger" href="{{ route('login') }}">
+                        @guest
+                            تسجيل الدخول
+                        @else
+                            {{ Auth::user()->name }}
+                        @endguest
+                    </a>
+                </li>
+
                 <li class="nav-item">
-                    <div class="buttons" id="sidebarToggle">الفئات</div>
+                    <button id="sidebarToggle" class="btn btn-danger">الفئات</button>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -205,6 +229,7 @@
             </form>
         </div>
     </nav>
+
     <div class="sidebar" id="sidebar">
         <span class="close-btn" id="closeSidebar">&times;</span>
         <h2>الفئات</h2>
@@ -248,6 +273,22 @@
         </div>
     </div>
 
+    <!-- About Us Section -->
+    <div class="about">
+        <h2 class="text-center" style="color: red">من نحن</h2>
+        <p>
+            مرحبًا بكم في TVTimes، وجهتكم الأولى لمتابعة أحدث الأفلام والمسلسلات التلفزيونية. نسعى جاهدين لتقديم أفضل
+            تجربة مشاهدة ممكنة، حيث يمكنك العثور على مجموعة واسعة من المحتويات الترفيهية التي تناسب جميع الأذواق.
+        </p>
+        <p>
+            تأسس موقع TVTimes بهدف توفير وصول سهل وسريع إلى الأفلام والمسلسلات المفضلة لديكم، مع إمكانية المشاهدة في أي
+            وقت ومن أي مكان. نحن نعمل باستمرار على تحسين خدماتنا لتلبية توقعاتكم وضمان رضاكم.
+        </p>
+        <p>
+            شكراً لاختياركم TVTimes. نتمنى لكم مشاهدة ممتعة!
+        </p>
+    </div>
+
     <div class="footer">
         <h2>TVTimes</h2>
     </div>
@@ -273,11 +314,10 @@
             });
         });
     </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7HUiIbX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">

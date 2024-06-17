@@ -11,7 +11,7 @@ class addchannelController extends Controller
 {
     public function index($id)
     {
-        $channels = Categorie::find($id)->channel;
+        $channels = Categorie::find($id)->channels;
         return view('channels.index', compact('channels'));
     }
 

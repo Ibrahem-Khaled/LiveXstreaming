@@ -19,11 +19,12 @@ return new class extends Migration {
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['admin', 'superadmin', 'user'])->default('user');
             $table->rememberToken();
             $table->timestamps();
         });
         DB::table('users')->insert([
-            [ 'name' => 'admin', 'email' => 'admin@admin.com', 'password' => Hash::make('admin123')]
+            ['name' => 'admin', 'email' => 'admin@admin.com', 'role' => 'superadmin', 'password' => Hash::make('admin123')]
         ]);
     }
 

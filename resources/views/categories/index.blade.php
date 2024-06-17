@@ -22,13 +22,17 @@
                         <div class="col-md-6">
                             <h2>Categories</h2>
                         </div>
-                        <div class="col-md-6 text-md-right">
+                        <div class="col-md-9 text-md-right">
                             <a href="#addChannel" class="btn btn-success" data-toggle="modal"><i
                                     class="material-icons">&#xE147;</i> <span>Add Channel</span></a>
                             <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
                                     class="material-icons">&#xE147;</i> <span>Add Category</span></a>
                             <a href="{{ route('sliders.index') }}" class="btn btn-success"><i
                                     class="material-icons">&#xE147;</i> <span>Manage Sliders</span></a>
+                            <a href="{{ route('show.users') }}" class="btn btn-success"><i
+                                    class="material-icons">&#xE147;</i> <span>Users</span></a>
+                            <a href="{{ route('showFromDashboard') }}" class="btn btn-success"><i
+                                    class="material-icons">&#xE147;</i> <span>ContactUs</span></a>
 
                         </div>
                     </div>
