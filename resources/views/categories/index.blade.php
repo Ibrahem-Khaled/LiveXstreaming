@@ -33,7 +33,10 @@
                                     class="material-icons">&#xE147;</i> <span>Users</span></a>
                             <a href="{{ route('showFromDashboard') }}" class="btn btn-success"><i
                                     class="material-icons">&#xE147;</i> <span>ContactUs</span></a>
-
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger"> <span>logout</span></button>
+                            </form>
                         </div>
                     </div>
                 </div>
