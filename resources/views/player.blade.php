@@ -5,24 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TVTimes</title>
+    <title>TVTimes - IPTV Player</title>
 
+    <!-- Normalize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
 
-    <link rel="stylesheet"
-        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Video.js CSS -->
+    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
 
     <style>
-        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
-
         body {
             margin: 0;
             padding: 0;
@@ -58,6 +56,7 @@
 
         .main {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
@@ -66,56 +65,26 @@
             background-size: cover;
             background-position: center;
             min-height: 600px;
-        }
-
-        .main .area h1 {
-            font-size: 60px;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .main .area h3 {
-            font-size: 24px;
-            margin-bottom: 40px;
-        }
-
-        .carousel {
-            width: 80%;
-            margin: 20px auto;
-        }
-
-        .carousel img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .container1 {
-            width: 80%;
-            margin: 20px auto;
-            text-align: center;
-        }
-
-        .category {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .box1 {
-            background-color: #333;
-            border-radius: 15px;
-            margin: 10px;
             padding: 20px;
-            width: 200px;
-            text-align: center;
         }
 
-        .box1 img {
+        .main .area {
+            max-width: 1200px;
+            width: 100%;
+            margin: 20px;
+        }
+
+        .main .area .video-js {
             width: 100%;
             height: auto;
             border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .main .area h1 {
+            font-size: 40px;
+            line-height: 1.2;
+            margin-bottom: 20px;
         }
 
         .about {
@@ -185,7 +154,8 @@
             height: 20px;
             margin-left: 10px;
         }
-        p{
+
+        p {
             text-align: center;
             margin: 10px;
         }
@@ -195,7 +165,6 @@
 <body>
 
     @include('layouts.navbar')
-
 
     <div class="sidebar" id="sidebar">
         <span class="close-btn" id="closeSidebar">&times;</span>
@@ -212,31 +181,12 @@
 
     <div class="main">
         <div class="area">
-            <h1>أفلام وتلفزيون بلا حدود <br>العروض، وأكثر من ذلك.</h1>
-            <h3>شاهد في أي مكان، ويمكنك الإلغاء في أي وقت.</h3>
-        </div>
-    </div>
-
-    <!-- Slideshow -->
-    <div class="carousel">
-        @foreach ($sliders as $slider)
-            <div><img src="{{ $slider->image }}" alt="Slide"></div>
-        @endforeach
-    </div>
-
-    <div class="container1">
-        <div class="text">
-            <h1>احدث الافلام والمسلسلات</h1>
-        </div>
-        <div class="category">
-            @foreach ($channels as $channel)
-                <a href="{{ route('playerPage', $channel->id) }}" class="box1">
-                    <img src="{{ $channel->image }}" alt="{{ $channel->name }}">
-                    <div class="text">
-                        <h4>{{ $channel->name }}</h4>
-                    </div>
-                </a>
-            @endforeach
+            <video id="my-video" class="video-js vjs-default-skin" controls preload="auto"
+                data-setup='{"fluid": true}'>
+                <source src="{{ $channel->link }}" type="application/x-mpegURL">
+                متصفحك لا يدعم عنصر الفيديو.
+            </video>
+            <h1>{{ $channel->name }}</h1>
         </div>
     </div>
 
@@ -260,18 +210,14 @@
         <h2>TVTimes</h2>
     </div>
 
+    <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <!-- Video.js JS -->
+    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+
     <script>
         $(document).ready(function() {
-            $('.carousel').slick({
-                infinite: true,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 2000,
-            });
-
             $('#sidebarToggle').click(function() {
                 $('#sidebar').toggleClass('show');
             });
@@ -281,8 +227,8 @@
             });
         });
     </script>
-    
-    </script>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7HUiIbX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>

@@ -22,4 +22,11 @@ class HomePageController extends Controller
         return view('home', compact('sliders', 'categories', 'channels'));
     }
 
+    public function player($channelId)
+    {
+        $channel = Channel::find($channelId);
+        $categories = Categorie::all();
+        return view('player', compact('channel', 'categories'));
+    }
+
 }

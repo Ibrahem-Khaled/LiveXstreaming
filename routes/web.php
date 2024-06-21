@@ -10,10 +10,13 @@ use App\Http\Controllers\web\addchannelController;
 
 
 Route::get('/', [HomePageController::class, 'index'])->name('homePage');
+Route::get('/video/{channelId}', [HomePageController::class, 'player'])->name('playerPage');
+
 Route::get('/download-apk', function () {
     $filePath = public_path('HeroTV.apk');
     return response()->download($filePath, 'HeroTV.apk');
 })->name('download.apk');
+
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');
 Route::get('/contact-us/store', [ContactUsController::class, 'store'])->name('contact-us.store');
 
