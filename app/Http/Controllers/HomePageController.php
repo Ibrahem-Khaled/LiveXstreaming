@@ -12,12 +12,8 @@ class HomePageController extends Controller
     public function index()
     {
         $sliders = Slider::all();
-        $categories = Categorie::with([
-            'channels' => function ($query) {
-                $query->take(5);
-            }
-        ])->get();
-        $channels = Channel::paginate(10);
+        $categories = Categorie::get();
+        $channels = Channel::where('is_active', 1)->paginate(10);
 
         return view('home', compact('sliders', 'categories', 'channels'));
     }
