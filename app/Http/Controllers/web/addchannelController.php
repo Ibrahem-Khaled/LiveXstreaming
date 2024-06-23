@@ -59,4 +59,11 @@ class addchannelController extends Controller
         return redirect()->route('home')
             ->with('success', 'Product deleted successfully');
     }
+    public function changeStatus($id)
+    {
+        $channel = Channel::find($id);
+        $channel->is_active = !$channel->is_active;
+        $channel->save();
+        return redirect()->back();
+    }
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('image')->nullable();
             $table->text('link');
+            $table->boolean('is_active')->default(1);
             $table->unsignedBigInteger('categorie_id');
             $table->foreign('categorie_id')->references('id')->on('categories');
             $table->timestamps();

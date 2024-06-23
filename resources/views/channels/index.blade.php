@@ -34,7 +34,7 @@
                             <th>Name</th>
                             <th>Image</th>
                             <th>Link</th>
-                            <th>Edit/Delete</th>
+                            <th>actions</th>
                         </tr>
                     </thead>
 
@@ -61,6 +61,14 @@
                                         <button type="submit" class="btn btn-danger"
                                             onclick="return confirm('Are you sure you want to delete this channel?')"><i
                                                 class="material-icons">&#xE872;</i></button>
+                                    </form>
+                                    <form action="{{ route('changeStatus', $item->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit"
+                                            class="btn btn-{{ $item->is_active == 1 ? 'success' : 'danger' }}"
+                                            onclick="return confirm('Are you sure you want to disable this channel?')">
+                                            {{ $item->is_active !== 1 ? 'غير فعال' : 'فعال' }}
+                                        </button>
                                     </form>
                                 </td>
                             </tr>

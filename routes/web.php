@@ -32,6 +32,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/channel/only/{id}', [addchannelController::class, 'show'])->name('channel');
     Route::post('/update/channels/{id}', [addchannelController::class, 'update'])->name('updateChannels');
     Route::post('/delete/channels/{id}', [addchannelController::class, 'destroy'])->name('deleteChannels');
+    Route::post('/change/channel/status/{id}', [addchannelController::class, 'changeStatus'])->name('changeStatus');
 
     Route::resource('sliders', SliderController::class);
 
